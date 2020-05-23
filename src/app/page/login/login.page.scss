@@ -1,0 +1,22 @@
+body {
+    background-image: linear-gradient(rgb(253, 232, 185), #fff);
+}
+
+.top {}
+
+.input {}
+
+.fundo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 25%;
+}
+
+.fundo span {
+    font-family: fantasy;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #000;
+}

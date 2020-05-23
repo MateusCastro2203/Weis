@@ -1,0 +1,29 @@
+<ion-content>
+
+    <body>
+
+        <ion-slide>
+
+            <div class="slide-inner ion-padding">
+
+                <span>login</span>
+                <ion-item class="ion-margin-top" lines="none">
+                    <ion-input class="input" type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-top" lines="none">
+                    <ion-input class="input" type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+                </ion-item>
+                <ion-button class="ion-margin-top" (click)="login()" color="primary">
+                    Entrar
+                </ion-button>
+            </div>
+        </ion-slide>
+
+        <div class="fundo">
+            <div class="container text-center">
+                <span>O seu lanche a um clique de você</span>
+            </div>
+        </div>
+    </body>
+
+</ion-content>
