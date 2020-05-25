@@ -1,7 +1,8 @@
 {
   "name": "Weis",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

@@ -1,22 +1,45 @@
 body {
-    background-image: linear-gradient(rgb(253, 232, 185), #fff);
+    background-image: linear-gradient(rgba(252, 149, 80, 0.986), rgba(248, 0, 0, 0.500));
 }
 
-.top {}
-
-.input {}
-
-.fundo {
+.container {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
-    height: 25%;
+    width: 65%;
+    margin: 0 auto;
+    z-index: 2;
+    &.top {
+        bottom: 65%;
+    }
 }
 
-.fundo span {
-    font-family: fantasy;
+.logo {
+    width: 100%;
+}
+
+ion-slides {
+    height: 100%;
+    .slide-inner {
+        width: 80%;
+        color: #fff;
+        ion-item {
+            --background: rgba(255, 255, 255, 0.2);
+            ion-input {
+                --color: #fff;
+            }
+        }
+    }
+}
+
+.login {
     text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(22, 22, 22, 0.486);
+}
+
+.cadastre {
+    font-size: 0.8em;
     letter-spacing: 0.1em;
-    color: #000;
+    color: rgba(22, 22, 22, 0.486);
 }
