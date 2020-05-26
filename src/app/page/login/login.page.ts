@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
-import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { User } from 'src/app/interfaces/user';
-import { from } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +14,10 @@ export class LoginPage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
-  public authService: AuthService;
-
+  
 
   constructor(
+    private authService: AuthService,
     public keyboard : Keyboard,
     private loadingControl: LoadingController,
     private toastCrtl: ToastController
@@ -33,15 +32,21 @@ export class LoginPage implements OnInit {
       this.slides.slideNext();
     }
   }
-  login(){
-
+  async login(){
+    await this.presentLoading();
+    try {
+      await this.authService.login(this.userLogin);
+    } catch (error) {
+      this.presentToast(error.message);
+    } finally {
+      this.loading.dismiss();
+    }
   }
   async register() {
     await this.presentLoading();
     try {
       await this.authService.register(this.userRegister);
     } catch (error) {
-      console.log( this.presentToast(error.message));
       this.presentToast(error.message);
     } finally {
       this.loading.dismiss();
@@ -54,7 +59,7 @@ export class LoginPage implements OnInit {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastCrtl.create({ message, duration: 2000 });
+    const toast = await this.toastCrtl.create({ message, duration: 4000 });
     toast.present();
   }
 }
