@@ -11,7 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,13 +23,14 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Keyboard
+    Keyboard,
+    Geolocation
   ],
   bootstrap: [AppComponent]
 })
