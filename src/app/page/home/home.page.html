@@ -1,14 +1,34 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="titulo">Weis</ion-title>
-        <img class="logo" src="../../../assets/img/Logo.png">
-    </ion-toolbar>
+    
 </ion-header>
 <ion-content>
+    <ion-list *ngIf="!products.length">
+        <ion-label>
+           <h3 class="nenhumProd">Nenhum produto encontrado :( </h3>
+        </ion-label>
+    </ion-list>
+    <ion-list>
+        <ion-item-sliding *ngFor="let product of products">
+        <ion-item button [routerLink]="['/details', product.id]">
+            <ion-avatar slot="start">
+            <img [src]="product.picture">
+            </ion-avatar>
 
+            <ion-label>
+            {{ product.name }}
+            <p>{{ product.description }}</p>
+            <p>{{ product.createdAt | date: 'short' }}</p>
+            </ion-label>
 
+            <ion-note color="primary" slot="end" *ngIf="product.price">{{ product.price | currency: 'BRL' }}</ion-note>
+        </ion-item>
 
+        <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteProduct(product.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+            Excluir
+            </ion-item-option>
+        </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
 </ion-content>

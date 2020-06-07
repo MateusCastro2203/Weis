@@ -28,9 +28,29 @@ ion-toolbar {
     --padding-top: 4px;
 }
 
-.nenhumProd{
-    margin-top: 50%;
-    margin-left: 15%;
+.titulo {
     text-transform: uppercase;
+    letter-spacing: 0.2em;
     color: rgb(255, 124, 37);
+    margin-top: 30px;
+}
+
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 65%;
+    margin: 0 auto;
+    z-index: 2;
+    &.top {
+        bottom: 75%;
+    }
+}
+
+.logo {
+    width: 30%;
+    height: 96px;
+    margin-left: 70%;
+    margin-top: -65px;
+    z-index: 1;
 }

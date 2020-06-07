@@ -16,22 +16,28 @@ export class AppComponent {
     private statusBar: StatusBar,
   ) {
     this.sideMenu();
-    this.initializeApp();
+   
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
+  
   sideMenu(){
     this.navigate = [
       {
         title : "Home",
         url: "/home",
         icon : "home"
+      },
+      {
+        title : "Perfil",
+        url : "/user",
+        icon : "person"
+      },
+      {
+        title : "Adiconar Produto",
+        url : "/produto",
+        icon : "add-circle"
       }
+
     ]
   }
  
