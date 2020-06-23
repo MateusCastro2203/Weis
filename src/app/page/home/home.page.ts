@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
   private productsSubscription: Subscription;
   
   constructor(
-    private geolocation: Geolocation,
     private productsService : ProductService
   ) { 
     this.productsSubscription = this.productsService.getProducts().subscribe(data =>{
@@ -23,12 +22,6 @@ export class HomePage implements OnInit {
   }
     
   ngOnInit() {
-    this.geolocation.getCurrentPosition().then((resp)=>{
-      let latitude = resp.coords.latitude;
-      let longitude = resp.coords.longitude;
-    }).catch((error)=>{
-      console.log('Error para pegar a localização', error);
-    });
   }
 
   ngDestroy(){

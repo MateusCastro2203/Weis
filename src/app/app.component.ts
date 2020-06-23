@@ -36,6 +36,11 @@ export class AppComponent {
         title : "Adiconar Produto",
         url : "/produto",
         icon : "add-circle"
+      },
+      {
+        tittle: "Sair",
+        url: "/login",
+        icon: "exit-outline"
       }
 
     ]
