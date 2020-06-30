@@ -36,7 +36,6 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.login(this.userLogin);
-      console.log("loguei");
       this.router.navigateByUrl('/home');
     } catch (error) {
       this.presentToast(error.message);

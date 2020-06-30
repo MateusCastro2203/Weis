@@ -1,3 +1,22 @@
 <ion-content>
-
+    <br>
+    <form [formGroup]="productForm" (ngSubmit)="formSubmit()">
+        <div class="container">
+            <ion-item class="ion-margin-top" lines="block" color="none">
+                <ion-input  type="text" formControlName="name" placeholder="Vendedor" color="primary"></ion-input>
+            </ion-item>
+            <ion-item class="ion-margin-top" lines="block" color="none">
+                <ion-input  type="text" placeholder="Produto" formControlName="product" color="primary"></ion-input>
+            </ion-item>
+            <ion-item class="ion-margin-top" lines="block" color="none">
+                <ion-input  type="number" placeholder="Valor" formControlName="value" color="primary"></ion-input>
+            </ion-item>
+            <ion-item class="ion-margin-top" lines="block" color="none">
+                <ion-input  type="text" placeholder="Descrição" formControlName="description" color="primary"></ion-input>
+            </ion-item>
+        </div>
+    </form>
+    <ion-button type="submit" expand="block" (click)="formSubmit()">
+        Salvar produto
+    </ion-button>
 </ion-content>

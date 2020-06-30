@@ -1,49 +1,53 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore/';
 import { Product } from '../interfaces/product';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Identifiers } from '@angular/compiler';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private produtsColection: AngularFirestoreCollection<Product>
-  
-  constructor(private afa: AngularFirestore) {
-    this.produtsColection = this.afa.collection<Product>('Products');
+  ProductListRef: AngularFireList <any>;
+  ProductRef: AngularFireObject <any>;
+  constructor(private db: AngularFireDatabase) {
   }
 
-  getProducts() {
-    return this.produtsColection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-
-          return {id, ...data};
-        })
-      })
-    )
+  //Create 
+  createProducts(product: Product){
+    return this.ProductListRef.push({
+      produto: product.produto,
+      name: product.name,
+      description: product.description,
+      value: product.value
+    })
+  }
+  // Get single 
+  getProductById(id:string){
+    this.ProductListRef = this.db.list('/produto/' +id);
+    return this.ProductListRef;
   }
 
-  getProductId(id: string) {
+  //Get List
 
+  getProductList(){
+    this.ProductListRef = this.db.list('/produto');
+    return this.ProductListRef; 
   }
 
-  addProduct(product: Product) {
-
+  //Update
+  updateProduct(id, prod: Product){
+    return this.ProductRef.update({
+      product: prod.produto,
+      name: prod.name,
+      description: prod.description,
+      value: prod.value
+    })
   }
 
-  updateProduct(id: string, product: Product) {
-
+  //Delete
+  deleteProduct(id: string){
+    this.ProductRef = this.db.object('/produto' + id);
+    this.ProductRef.remove();
   }
-
-  deleteProduct(id: string) {
-
-  }
-
-
-
 }

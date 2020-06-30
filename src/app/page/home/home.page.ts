@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NavComponent } from '../../nav/nav.component';
 import { Product } from '../../interfaces/product';
 import { from, Subscription } from 'rxjs';
@@ -10,20 +9,40 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private products = new Array<Product>();
   private productsSubscription: Subscription;
-  
+  product = [];
+
   constructor(
-    private productsService : ProductService
+    private prodService: ProductService
   ) { 
-    this.productsSubscription = this.productsService.getProducts().subscribe(data =>{
-      this.products = data;
-    })
   }
     
   ngOnInit() {
+    this.fetchProduct();
+    let prodRes = this.prodService.getProductList();
+    prodRes.snapshotChanges().subscribe(res => {
+      this.product = [];
+      res.forEach(item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.product.push(a as Product);
+      })
+    })
   }
 
+  fetchProduct(){
+    this.prodService.getProductList().valueChanges().subscribe(res => {
+      console.log(res)
+    })
+  }
+
+  deleteBooking(id){
+    console.log(id);
+    if(window.confirm('Você realmente deseja deletar?')){
+      this.prodService.deleteProduct(id)
+    }
+  }
+  
   ngDestroy(){
     this.productsSubscription.unsubscribe();
   }
