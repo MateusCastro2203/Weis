@@ -1,29 +1,31 @@
-<ion-app>
-    <ion-router-outlet></ion-router-outlet>
-    <ion-menu side="start" menuId="first" contentId="content1">
-        <ion-header>
-            <ion-toolbar>
-                <ion-title>Weis</ion-title>
-            </ion-toolbar>
-        </ion-header>
-        <ion-content>
-            <ion-list *ngFor="let pages of navigate" class="list">
-                <ion-menu-toggle auto-hide="true" class="menu">
-                    <ion-item [routerLink]="pages.url" routerDirection="forward">
-                        <ion-icon [name]="pages.icon" slot="start" routerLinkActive="tab-selected"></ion-icon>
-                        {{pages.title}}
-                    </ion-item>
-                </ion-menu-toggle>
-            </ion-list>
-        </ion-content>
-    </ion-menu>
-    
-    <ion-toolbar>
-        <ion-buttons slot="start" >
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title class="titulo">Weis</ion-title>
-        <img class="logo" src="../../assets/img/Logo.png">
-    </ion-toolbar>
+<ion-app id="unico">
+    <div id="menu" class="hidde"> 
+        <ion-menu side="start" menuId="first" contentId="content1">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title>Weis</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-list *ngFor="let pages of navigate" class="list">
+                    <ion-menu-toggle auto-hide="true" class="menu" >
+                        <ion-item [routerLink]="pages.url" routerDirection="forward" lines="none">
+                            <ion-icon [name]="pages.icon" slot="start" routerLinkActive="tab-selected"></ion-icon>
+                            {{pages.title}}
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        
+        <ion-toolbar color="primary">
+            <ion-buttons slot="start" >
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title class="titulo">Weis</ion-title>
+            <img class="logo" src="../../assets/img/Logo.png">
+        </ion-toolbar>
+    </div>
     <ion-router-outlet id="content1"></ion-router-outlet>
+
 </ion-app>

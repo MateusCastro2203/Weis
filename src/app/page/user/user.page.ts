@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -13,3 +13,5 @@ export class UserPage implements OnInit {
   }
 
 }
+
+

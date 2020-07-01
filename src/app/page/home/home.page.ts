@@ -3,6 +3,7 @@ import { NavComponent } from '../../nav/nav.component';
 import { Product } from '../../interfaces/product';
 import { from, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { AppComponent } from '../../app.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -13,11 +14,13 @@ export class HomePage implements OnInit {
   product = [];
 
   constructor(
-    private prodService: ProductService
+    private prodService: ProductService,
+    private app : AppComponent
   ) { 
   }
     
   ngOnInit() {
+    this.app.login();
     this.fetchProduct();
     let prodRes = this.prodService.getProductList();
     prodRes.snapshotChanges().subscribe(res => {
@@ -46,5 +49,6 @@ export class HomePage implements OnInit {
   ngDestroy(){
     this.productsSubscription.unsubscribe();
   }
+
 
 }

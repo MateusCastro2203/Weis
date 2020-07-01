@@ -4,6 +4,9 @@ import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
+
+import { from } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,10 +24,14 @@ export class LoginPage implements OnInit {
     public keyboard : Keyboard,
     private loadingControl: LoadingController,
     private toastCrtl: ToastController,
-    private router : Router
+    private router : Router,
+    private app : AppComponent
     ) { }
 
-  ngOnInit() { }
+  ngOnInit() 
+  {
+    
+   }
   segmentChanged(event: any){
     if(event.detail.value === 'login'){
       this.slides.slidePrev();
@@ -36,6 +43,7 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.login(this.userLogin);
+      
       this.router.navigateByUrl('/home');
     } catch (error) {
       this.presentToast(error.message);

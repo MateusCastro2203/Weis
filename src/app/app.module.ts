@@ -18,6 +18,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { Camera } from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 import { HttpModule } from '@angular/http';
 
@@ -41,7 +43,9 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Keyboard,
-    Geolocation
+    Geolocation,
+    Camera,
+    File
   ],
   bootstrap: [AppComponent]
 })

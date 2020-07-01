@@ -6,14 +6,20 @@
                 <ion-input  type="text" formControlName="name" placeholder="Vendedor" color="primary"></ion-input>
             </ion-item>
             <ion-item class="ion-margin-top" lines="block" color="none">
-                <ion-input  type="text" placeholder="Produto" formControlName="product" color="primary"></ion-input>
+                <ion-input  type="text" placeholder="Produto" formControlName="produto" color="primary"></ion-input>
             </ion-item>
             <ion-item class="ion-margin-top" lines="block" color="none">
-                <ion-input  type="number" placeholder="Valor" formControlName="value" color="primary"></ion-input>
+                <ion-input  type="text" placeholder="Valor" formControlName="value" color="primary"></ion-input>
             </ion-item>
             <ion-item class="ion-margin-top" lines="block" color="none">
                 <ion-input  type="text" placeholder="Descrição" formControlName="description" color="primary"></ion-input>
             </ion-item>
+            <ion-item class="ion-margin-top" lines="block" color="none">
+                <ion-input  type="text" placeholder="Numero de Contato" formControlName="phone" color="primary"></ion-input>
+            </ion-item>
+            <ion-button color='primary' expand="block" (click)="openGalery()">
+                Escolher Foto
+            </ion-button>
         </div>
     </form>
     <ion-button type="submit" expand="block" (click)="formSubmit()">

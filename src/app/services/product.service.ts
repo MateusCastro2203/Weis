@@ -19,7 +19,9 @@ export class ProductService {
       produto: product.produto,
       name: product.name,
       description: product.description,
-      value: product.value
+      value: product.value,
+      img: product.imgUrl,
+      phone: product.phone
     })
   }
   // Get single 
@@ -41,7 +43,9 @@ export class ProductService {
       product: prod.produto,
       name: prod.name,
       description: prod.description,
-      value: prod.value
+      value: prod.value,
+      imgUrl: prod.imgUrl
+
     })
   }
 
